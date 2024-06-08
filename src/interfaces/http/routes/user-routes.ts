@@ -5,6 +5,15 @@ import { authMiddleware } from "../../../middlewares/auth-middleware";
 const userRoutes = Router();
 const userContoller = UserFactory.makeUserController();
 
+userRoutes.get("/:userId", authMiddleware, (req: Request, res: Response) =>
+  userContoller.handleShowUser(req, res)
+)
+userRoutes.put("/:userId", authMiddleware, (req: Request, res: Response) => 
+  userContoller.handleUpdateUser(req, res)
+)
+userRoutes.delete("/:userId", authMiddleware, (req: Request, res: Response) =>
+  userContoller.handleDestroyUser(req, res)
+)
 userRoutes.post("/register", (req: Request, res: Response) =>
   userContoller.handleRegisterUser(req, res)
 );
