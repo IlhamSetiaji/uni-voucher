@@ -11,4 +11,16 @@ export interface UserRepositoryInterface {
     gender?: string,
     phone_number?: string
   ): Promise<UserEntity>;
+  updateUser(
+    role_id: string,
+    user_id: string,
+    username: string,
+    email: string,
+    name: string,
+    password: string,
+    gender?: string,
+    phone_number?: string
+  ): Promise<UserEntity>
+  findUserById(user_id: string): Promise<UserEntity | null>
+  destroyUserByUserId(user_id: string): Promise<UserEntity | null>
 }
